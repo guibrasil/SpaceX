@@ -1,0 +1,6 @@
+framework module Pods_TappableSpaceX {
+  umbrella header "Pods-TappableSpaceX-umbrella.h"
+
+  export *
+  module * { export * }
+}
