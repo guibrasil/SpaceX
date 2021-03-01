@@ -29,6 +29,7 @@
 		56AF463625E1AEBE006123DC /* ImageHelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AF463525E1AEBE006123DC /* ImageHelperExtension.swift */; };
 		56AF463925E1B5F8006123DC /* DateHelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AF463825E1B5F8006123DC /* DateHelperExtension.swift */; };
 		56AF463F25E1BD3B006123DC /* TappableRocketDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AF463E25E1BD3B006123DC /* TappableRocketDetailsView.swift */; };
+		56C72B0C25ED2FF200211D9A /* RocketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C72B0B25ED2FF200211D9A /* RocketListViewModel.swift */; };
 		DB1CCA9D114DBD4CE03B7AB5 /* Pods_TappableSpaceX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC509A80E223D70476A7DD3B /* Pods_TappableSpaceX.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		56AF463525E1AEBE006123DC /* ImageHelperExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelperExtension.swift; sourceTree = "<group>"; };
 		56AF463825E1B5F8006123DC /* DateHelperExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelperExtension.swift; sourceTree = "<group>"; };
 		56AF463E25E1BD3B006123DC /* TappableRocketDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableRocketDetailsView.swift; sourceTree = "<group>"; };
+		56C72B0B25ED2FF200211D9A /* RocketListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketListViewModel.swift; sourceTree = "<group>"; };
 		6087B91C9474F2595E524E58 /* Pods-TappableSpaceX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TappableSpaceX.debug.xcconfig"; path = "Target Support Files/Pods-TappableSpaceX/Pods-TappableSpaceX.debug.xcconfig"; sourceTree = "<group>"; };
 		BC509A80E223D70476A7DD3B /* Pods_TappableSpaceX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TappableSpaceX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF5FB437FFCAB3FBA09227D /* Pods-TappableSpaceX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TappableSpaceX.release.xcconfig"; path = "Target Support Files/Pods-TappableSpaceX/Pods-TappableSpaceX.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				56AF462E25E19EC9006123DC /* RocketViewModel.swift */,
+				56C72B0B25ED2FF200211D9A /* RocketListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				56878CA725E1CF3200B03468 /* TappableAPIConstants.swift in Sources */,
 				56AF462125E07EFD006123DC /* TappableNetworkManager.swift in Sources */,
 				563F199C25E066580050F536 /* SceneDelegate.swift in Sources */,
+				56C72B0C25ED2FF200211D9A /* RocketListViewModel.swift in Sources */,
 				56616A4825E31CA50098FDBD /* ColorHelperExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

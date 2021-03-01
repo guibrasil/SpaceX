@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import Combine
 
 final class TappableNetworkManager: NSObject {
 
@@ -30,7 +31,9 @@ extension TappableNetworkManager {
                     completion(.failure(err))
                     return
                 }
-                completion(.success(data))
+                DispatchQueue.main.async {
+                    completion(.success(data))
+                } 
             }
     }
 }

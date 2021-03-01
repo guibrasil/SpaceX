@@ -14,13 +14,12 @@ class TappableSpaceXMainCell: UITableViewCell {
     @IBOutlet private var dateLabel: UILabel?
     @IBOutlet var badgeView: UIView?
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     func setCellData(viewModel: RocketViewModel, with style: Style) {
-        self.rocketNameLabel?.text = viewModel.name
+        self.rocketNameLabel?.text = viewModel.title
         self.rocketNameLabel?.font = style.nameFont
         self.rocketNameLabel?.textColor = style.nameColor
 
@@ -29,21 +28,12 @@ class TappableSpaceXMainCell: UITableViewCell {
         self.dateLabel?.textColor = style.dateColor
 
         self.itemImageView?.layer.cornerRadius = style.imageRadius
-        if let url = URL(string: viewModel.rocketImage) {
+        if let url = URL(string: viewModel.rocketImageUrl) {
             self.itemImageView?.load(url: url)
         }
+        self.badgeView?.backgroundColor = viewModel.badgeColorOutput().0
 
-        if let successRate = viewModel.successRatePct {
-            if successRate < 30 {
-                self.badgeView?.backgroundColor = style.thirdBadgeColor
-            } else if successRate >= 30 && successRate < 60 {
-                self.badgeView?.backgroundColor = style.secondBadgeColor
-            } else {
-                self.badgeView?.backgroundColor = style.firstBadgeColor
-            }
-        }
     }
-    
 }
 
 extension TappableSpaceXMainCell {
@@ -53,19 +43,14 @@ extension TappableSpaceXMainCell {
         let nameFont: UIFont
         let dateColor: UIColor
         let dateFont: UIFont
-        let firstBadgeColor: UIColor
-        let secondBadgeColor: UIColor
-        let thirdBadgeColor: UIColor
 
         static let baseStyle = Style(
             imageRadius: 6,
             nameColor: .black,
             nameFont: UIFont.systemFont(ofSize: 16, weight: .heavy),
             dateColor: .black,
-            dateFont: UIFont.systemFont(ofSize: 10, weight: .regular),
-            firstBadgeColor: .green,
-            secondBadgeColor: .orange,
-            thirdBadgeColor: .red
+            dateFont: UIFont.systemFont(ofSize: 10, weight: .regular)
+
         )
     }
 }

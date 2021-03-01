@@ -17,28 +17,15 @@ struct TappableRocketDetailsView: View {
 
     }
 
-    private func updateBadgeColor() -> Color {
-
-        guard let successRate = rocket.successRatePct else { return Color.white }
-        if successRate < 30 {
-            return Color.red
-        } else if successRate >= 30 && successRate < 60 {
-            return Color.orange
-        } else {
-            return Color.green
-        }
-    }
-
     var body: some View {
         ScrollView(.vertical, showsIndicators: true, content: {
-
             //Top Group
             VStack {
-                GroupBox(label: Label(rocket.name ?? "", systemImage: "info.circle"), content: {
+                GroupBox(label: Label(rocket.title ?? "", systemImage: "info.circle"), content: {
                     Divider().padding(.vertical, 4)
 
                     VStack(alignment: .center, spacing: 10, content: {
-                        Image(uiImage: rocket.rocketImage.loadImage())
+                        Image(uiImage: rocket.rocketImageUrl.loadImage())
                             .resizable()
                             .scaledToFill()
                             .frame(width: 300, height: 300)
@@ -62,7 +49,7 @@ struct TappableRocketDetailsView: View {
                             .fontWeight(.heavy)
                         VStack {
                             Circle()
-                                .fill(self.updateBadgeColor())
+                                .fill(rocket.badgeColorOutput().1)
                                 .frame(width: 10, height: 10, alignment: .trailing)
                         }
                     }
@@ -72,9 +59,10 @@ struct TappableRocketDetailsView: View {
                 })
 
                 // BOTTOM GROUP
-                SourceLinkView(wikiString: rocket.wikipedia ?? "")
+                SourceLinkView(wikiString: rocket.wikipediaUrl ?? "")
             }
-        }).padding()
+        })//: ScrollView
+        .padding()
     }
 }
 
