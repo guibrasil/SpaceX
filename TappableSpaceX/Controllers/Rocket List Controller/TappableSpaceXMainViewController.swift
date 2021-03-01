@@ -11,7 +11,8 @@ import Alamofire
 
 class TappableSpaceXMainViewController: UIViewController {
 
-    private var rocketViewModels = [RocketViewModel]()
+    private var rocketList = RocketListViewModel()
+//    private var rockets = [Rocket]()
     private let cellId = "Cell"
     private let webService = TappableNetworkManager.shared()
     private var badgeColor: UIColor = .green
@@ -42,11 +43,9 @@ class TappableSpaceXMainViewController: UIViewController {
                 let decoder = JSONDecoder()
                 do {
                     let rockets = try decoder.decode([Rocket].self, from: data)
-                    DispatchQueue.main.async {
-                        self?.rocketViewModels = rockets.map { return RocketViewModel(rocket: $0) }
-                        self?.tableView?.reloadData()
-                    }
-                    
+                    self?.rocketList.rocketsList = rockets.map(RocketViewModel.init)
+                    self?.tableView?.reloadData()
+
                 } catch(let ex){
                     print(ex.localizedDescription)
                 }
@@ -68,12 +67,12 @@ class TappableSpaceXMainViewController: UIViewController {
 
 extension TappableSpaceXMainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rocketViewModels.count
+        return self.rocketList.numberOfRockets()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TappableSpaceXMainCell
-        let rocketViewModel = rocketViewModels[indexPath.row]
+        let rocketViewModel = self.rocketList.rocketViewModelIndex(at: indexPath.row)
         self.badgeColor = cell.badgeView?.backgroundColor ?? .white
         cell.setCellData(viewModel: rocketViewModel, with: .baseStyle)
 
@@ -82,7 +81,7 @@ extension TappableSpaceXMainViewController: UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tappedRocket = rocketViewModels[indexPath.row]
+        let tappedRocket = rocketList.rocketViewModelIndex(at: indexPath.row)
         let rocketView = TappableRocketDetailsView(rocket: tappedRocket)
         let host = UIHostingController(rootView: rocketView)
         navigationController?.pushViewController(host, animated: true)

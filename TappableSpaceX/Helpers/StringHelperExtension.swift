@@ -15,8 +15,6 @@ extension String {
             let data: Data = try Data(contentsOf: url)
             return UIImage(data: data) ?? UIImage()
         } catch {}
-
         return UIImage()
-
     }
 }
